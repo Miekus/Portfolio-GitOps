@@ -9,7 +9,7 @@ spec:
   source:
     path: apps
     repoURL: 'https://github.com/Miekus/Portfolio-GitOps.git'
-    targetRevision: devops
+    targetRevision: HEAD
   project: default
   syncPolicy:
     automated:
