@@ -1,15 +1,31 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: mysql
+#   finalizers:
+#   - resources-finalizer.argocd.argoproj.io
+# spec:
+#   destination:
+#     namespace: default
+#     server: https://kubernetes.default.svc
+#   project: default
+#   source:
+#     path: mysql
+#     repoURL: https://github.com/VinnieVenture/Flask_website.git
+#     targetRevision: devops
+
+
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: mysql
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
+  namespace: default
 spec:
-  destination:
-    namespace: default
-    server: https://kubernetes.default.svc
   project: default
   source:
-    path: mysql
     repoURL: https://github.com/VinnieVenture/Flask_website.git
     targetRevision: devops
+    path: mysql
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
