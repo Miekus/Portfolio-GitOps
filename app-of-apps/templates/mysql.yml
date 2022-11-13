@@ -6,10 +6,8 @@ metadata:
 spec:
   project: default
   source:
-    # repoURL: https://github.com/VinnieVenture/Flask_website.git
-    # targetRevision: devops
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: HEAD
+    repoURL: https://github.com/VinnieVenture/Flask_website.git
+    targetRevision: devops
     path: mysql
   destination:
     server: https://kubernetes.default.svc
