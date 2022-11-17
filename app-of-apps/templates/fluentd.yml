@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: fluent-bit
+  name: fluentd
   namespace: default
 spec:
   project: default
   source:
     repoURL: https://github.com/VinnieVenture/Flask_website.git
     targetRevision: devops
-    path: fluent-bit
+    path: fluentd
   destination:
     server: https://kubernetes.default.svc
     namespace: default
