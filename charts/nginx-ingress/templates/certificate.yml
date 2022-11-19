@@ -1,0 +1,11 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencrypt-tls
+spec:
+  dnsNames:
+  - testmk.ddns.net
+  secretName: letsencrypt-tls
+  issuerRef:
+    name: letsencrypt-claster-issuer
+    kind: ClusterIssuer 

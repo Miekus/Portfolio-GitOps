@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/VinnieVenture/Flask_website.git
-    targetRevision: devops
-    path: kube-prometheus-stack
+    repoURL: https://github.com/Miekus/Portfolio-GitOps.git
+    targetRevision: HEAD
+    path: charts/kube-prometheus-stack
   destination:
     server: https://kubernetes.default.svc
     namespace: default
