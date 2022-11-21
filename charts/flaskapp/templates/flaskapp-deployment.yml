@@ -17,28 +17,16 @@ template:
     spec:
     containers:
     - name: flaskapp
-        image: MateuszKiszkaFlaskApp.azurecr.io/flaskapp:1.0.47
+        image: MateuszKiszkaFlaskApp.azurecr.io/flaskapp:1.0.49
         ports:
         - containerPort: 5000
         env:
         - name: DATABASE_USER
-            valueFrom:
-            secretKeyRef:
-                name: external-secret  
-                key: mysql-user 
+            value: root
         - name: DATABASE_URI
-            valueFrom:
-            secretKeyRef:
-                name: external-secret  
-                key: mysql-uri
+            value: mysql+pymysql://root:root@mysql/
         - name: DATABASE_PASSWORD
-            valueFrom:
-            secretKeyRef:
-                name: external-secret  
-                key: mysql-password  
+            value: root
         - name: DATABASE_HOST
-            valueFrom:
-            secretKeyRef:
-                name: external-secret  
-                key: mysql-host
+            value: mysql
                 
