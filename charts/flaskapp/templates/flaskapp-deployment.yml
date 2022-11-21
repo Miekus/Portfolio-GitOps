@@ -1,32 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: flaskapp-deployment
-    namespace: default
-    labels:
-        app: flaskapp
+  name: flaskapp-deployment
+  namespace: default
+  labels:
+    app: flaskapp
 spec:
-    replicas: 1
-    selector:
-        matchLabels:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flaskapp
+  template:
+    metadata:
+      labels:
         app: flaskapp
-    template:
-        metadata:
-            labels:
-                app: flaskapp
-        spec:
-            containers:
-            - name: flaskapp
-            image: MateuszKiszkaFlaskApp.azurecr.io/flaskapp:1.0.50
-            ports:
-            - containerPort: 5000
-            env:
-                - name: DATABASE_USER
-                value: root
-                - name: DATABASE_URI
-                value: mysql+pymysql://root:root@mysql/
-                - name: DATABASE_PASSWORD
-                value: root
-                - name: DATABASE_HOST
-                value: mysql
-            
+    spec:
+      containers:
+      - name: flaskapp
+        image: MateuszKiszkaFlaskApp.azurecr.io/flaskapp:1.0.50
+        ports:
+        - containerPort: 5000
+        env:
+          - name: DATABASE_USER
+            value: root
+          - name: DATABASE_URI
+            value: mysql+pymysql://root:root@mysql/
+          - name: DATABASE_PASSWORD
+            value: root
+          - name: DATABASE_HOST
+            value: mysql
