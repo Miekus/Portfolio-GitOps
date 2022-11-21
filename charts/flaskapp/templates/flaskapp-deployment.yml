@@ -12,21 +12,21 @@ spec:
         app: flaskapp
     template:
         metadata:
-        labels:
-            app: flaskapp
+            labels:
+                app: flaskapp
         spec:
-        containers:
-        - name: flaskapp
-        image: MateuszKiszkaFlaskApp.azurecr.io/flaskapp:1.0.50
-        ports:
-        - containerPort: 5000
-        env:
-            - name: DATABASE_USER
-              value: root
-            - name: DATABASE_URI
-              value: mysql+pymysql://root:root@mysql/
-            - name: DATABASE_PASSWORD
-              value: root
-            - name: DATABASE_HOST
-              value: mysql
-        
+            containers:
+            - name: flaskapp
+            image: MateuszKiszkaFlaskApp.azurecr.io/flaskapp:1.0.50
+            ports:
+            - containerPort: 5000
+            env:
+                - name: DATABASE_USER
+                value: root
+                - name: DATABASE_URI
+                value: mysql+pymysql://root:root@mysql/
+                - name: DATABASE_PASSWORD
+                value: root
+                - name: DATABASE_HOST
+                value: mysql
+            
