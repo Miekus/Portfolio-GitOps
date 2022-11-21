@@ -1,75 +1,45 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: flaskapp-deployment
-  namespace: default
-  labels:
-    app: flaskapp
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: flaskapp
-  template:
-    metadata:
-      labels:
-        app: flaskapp
-    spec:
-      containers:
-      - name: flaskapp
-        image: MateuszKiszkaFlaskApp.azurecr.io/flaskapp:latest
-        ports:
-        - containerPort: 5000
-        env:
-          - name: DATABASE_USER
-            valueFrom:
-              secretKeyRef:
-                name: external-secret  
-                key: mysql-user 
-          - name: DATABASE_URI
-            valueFrom:
-              secretKeyRef:
-                name: external-secret  
-                key: mysql-uri
-          - name: DATABASE_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: external-secret  
-                key: mysql-password  
-          - name: DATABASE_HOST
-            valueFrom:
-              secretKeyRef:
-                name: external-secret  
-                key: mysql-host
-      #   volumeMounts:
-      #   - name: secrets-store01-inline
-      #     mountPath: "/mnt/secrets-store"
-      #     readOnly: true
-      #   env:
-      #     - name: DATABASE_USER
-      #       valueFrom:
-      #         secretKeyRef:
-      #           name: mysql-secrets  
-      #           key: mysql-user 
-      #     - name: DATABASE_URI
-      #       valueFrom:
-      #         secretKeyRef:
-      #           name: mysql-secrets
-      #           key: mysql-uri
-      #     - name: DATABASE_PASSWORD
-      #       valueFrom:
-      #         secretKeyRef:
-      #           name: mysql-secrets  
-      #           key: mysql-password  
-      #     - name: DATABASE_HOST
-      #       valueFrom:
-      #         secretKeyRef:
-      #           name: mysql-secrets
-      #           key: mysql-host
-      # volumes:
-      #   - name: secrets-store01-inline
-      #     csi:
-      #       driver: secrets-store.csi.k8s.io
-      #       readOnly: true
-      #       volumeAttributes:
-      #         secretProviderClass: azure-sync
+                    apiVersion: apps/v1
+                    kind: Deployment
+                    metadata:
+                    name: flaskapp-deployment
+                    namespace: default
+                    labels:
+                        app: flaskapp
+                    spec:
+                    replicas: 1
+                    selector:
+                        matchLabels:
+                        app: flaskapp
+                    template:
+                        metadata:
+                        labels:
+                            app: flaskapp
+                        spec:
+                        containers:
+                        - name: flaskapp
+                            image: MateuszKiszkaFlaskApp.azurecr.io/flaskapp:1.0.42
+                            ports:
+                            - containerPort: 5000
+                            env:
+                            - name: DATABASE_USER
+                                valueFrom:
+                                secretKeyRef:
+                                    name: external-secret  
+                                    key: mysql-user 
+                            - name: DATABASE_URI
+                                valueFrom:
+                                secretKeyRef:
+                                    name: external-secret  
+                                    key: mysql-uri
+                            - name: DATABASE_PASSWORD
+                                valueFrom:
+                                secretKeyRef:
+                                    name: external-secret  
+                                    key: mysql-password  
+                            - name: DATABASE_HOST
+                                valueFrom:
+                                secretKeyRef:
+                                    name: external-secret  
+                                    key: mysql-host
+                    EOF
+                
