@@ -1,45 +1,44 @@
-                    apiVersion: apps/v1
-                    kind: Deployment
-                    metadata:
-                    name: flaskapp-deployment
-                    namespace: default
-                    labels:
-                        app: flaskapp
-                    spec:
-                    replicas: 1
-                    selector:
-                        matchLabels:
-                        app: flaskapp
-                    template:
-                        metadata:
-                        labels:
-                            app: flaskapp
-                        spec:
-                        containers:
-                        - name: flaskapp
-                            image: MateuszKiszkaFlaskApp.azurecr.io/flaskapp:1.0.46
-                            ports:
-                            - containerPort: 5000
-                            env:
-                            - name: DATABASE_USER
-                                valueFrom:
-                                secretKeyRef:
-                                    name: external-secret  
-                                    key: mysql-user 
-                            - name: DATABASE_URI
-                                valueFrom:
-                                secretKeyRef:
-                                    name: external-secret  
-                                    key: mysql-uri
-                            - name: DATABASE_PASSWORD
-                                valueFrom:
-                                secretKeyRef:
-                                    name: external-secret  
-                                    key: mysql-password  
-                            - name: DATABASE_HOST
-                                valueFrom:
-                                secretKeyRef:
-                                    name: external-secret  
-                                    key: mysql-host
-                    EOF
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+name: flaskapp-deployment
+namespace: default
+labels:
+    app: flaskapp
+spec:
+replicas: 1
+selector:
+    matchLabels:
+    app: flaskapp
+template:
+    metadata:
+    labels:
+        app: flaskapp
+    spec:
+    containers:
+    - name: flaskapp
+        image: MateuszKiszkaFlaskApp.azurecr.io/flaskapp:1.0.47
+        ports:
+        - containerPort: 5000
+        env:
+        - name: DATABASE_USER
+            valueFrom:
+            secretKeyRef:
+                name: external-secret  
+                key: mysql-user 
+        - name: DATABASE_URI
+            valueFrom:
+            secretKeyRef:
+                name: external-secret  
+                key: mysql-uri
+        - name: DATABASE_PASSWORD
+            valueFrom:
+            secretKeyRef:
+                name: external-secret  
+                key: mysql-password  
+        - name: DATABASE_HOST
+            valueFrom:
+            secretKeyRef:
+                name: external-secret  
+                key: mysql-host
                 
