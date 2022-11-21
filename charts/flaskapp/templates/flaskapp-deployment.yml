@@ -17,7 +17,7 @@
                         spec:
                         containers:
                         - name: flaskapp
-                            image: MateuszKiszkaFlaskApp.azurecr.io/flaskapp:1.0.42
+                            image: MateuszKiszkaFlaskApp.azurecr.io/flaskapp:1.0.45
                             ports:
                             - containerPort: 5000
                             env:
